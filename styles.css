@@ -1,0 +1,73 @@
+body {
+    background: linear-gradient(135deg, #ff00cc 0%, #333399 100%);
+    color: #fff;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: flashy-bg 1s infinite alternate;
+}
+
+@keyframes flashy-bg {
+    0% {
+        background: linear-gradient(135deg, #ff00cc 0%, #333399 100%);
+    }
+    50% {
+        background: linear-gradient(135deg, #00ffd0 0%, #ff9900 100%);
+    }
+    100% {
+        background: linear-gradient(135deg, #ff00cc 0%, #333399 100%);
+    }
+}
+
+@keyframes rapid-grow {
+    0% {
+        font-size: 1em;
+    }
+    80% {
+        font-size: 3em;
+    }
+    100% {
+        font-size: 1em;
+    }
+}
+
+audio {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+@keyframes rapid-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0, rgba(255,255,255,0.1) 2px, transparent 4px, transparent 100px);
+    z-index: 0;
+}
+
+body > p {
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff00cc;
+    transition: transform 0.2s;
+    animation: rapid-grow 0.5s cubic-bezier(0.7,0,0.9,1) infinite, rapid-spin 2s linear infinite;
+}
+
+body > *:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
